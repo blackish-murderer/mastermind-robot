@@ -7,7 +7,7 @@ const whiteAuthCookie = 'echat-authentication-cookie=39edc78a-49ee-47c3-b8e0-89e
 
 function Connection(){
   const port = 80;
-  const host = 'e-chat.co';//'e-chat.co'; //'92.222.216.113';
+  const host = 'e-chat.co'; //'e-chat.co'; //'92.222.216.113';
 
   var agent = new http.Agent({keepAlive: true, keepAliveMsecs: 40000});
   var cookies = 'echat-authentication-cookie=6d849eb3-fe46-48e8-8a26-05d9a126b78d;'; //manonAuthCookie
@@ -16,7 +16,7 @@ function Connection(){
     var config = {
       'headers': {
         'Cookie': cookies,
-        'Host': 'e-chat.co',
+        'Host': 'e-chat.co', //'e-chat.co', //'92.222.216.113',
         'Connection': 'keep-alive'
       },
       'host': host,
