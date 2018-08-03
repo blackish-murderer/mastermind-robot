@@ -42,7 +42,7 @@ function Game() {
       myGuess += seed[Math.floor(Math.random() * seed.length)];
       seed.splice(seed.indexOf(toGuess[toGuess.length - 1]), 1);
     }
-    return '43210';//myGuess;
+    return myGuess;
   }
 
   function evaluateGuess(guess) {
