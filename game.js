@@ -37,38 +37,38 @@ function Game() {
   function generateToGuess() {
     var seed = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     var myGuess = seed[Math.floor(Math.random() * seed.length)];
-    seed.splice(seed.indexOf(toGuess[toGuess.length - 1]), 1, '0');
+    seed.splice(seed.indexOf(myGuess[myGuess.length - 1]), 1, '0');
     for(var i = 0; i < 4; i++) {
       myGuess += seed[Math.floor(Math.random() * seed.length)];
-      seed.splice(seed.indexOf(toGuess[toGuess.length - 1]), 1);
+      seed.splice(seed.indexOf(myGuess[myGuess.length - 1]), 1);
     }
     return myGuess;
   }
 
-  function evaluateGuess(guess) {
+  function evaluateGuess(myGuess) {
     var inPlace = 0;
     var inGuess = 0;
-    for(var i = 0; i < guess.length; i++) {
-      if(guess[i] === toGuess[i]) {
+    for(var i = 0; i < toGuess.length; i++) {
+      if(myGuess[i] === toGuess[i]) {
         inPlace++;
-      } else if(toGuess.includes(guess[i])) {
+      } else if(toGuess.includes(myGuess[i])) {
         inGuess++;
       }
     }
     return {'inPlace': inPlace, 'inGuess': inGuess, 'isWon': inPlace === 5};
   }
 
-  function validateGuess(guess) {
-    if(guess.isFixSized(5) === false) {
+  function validateGuess(myGuess) {
+    if(myGuess.isFixSized(5) === false) {
       return 1;
     }
-    if(guess.isNumerial() === false) {
+    if(myGuess.isNumerial() === false) {
       return 2;
     }
-    if(guess.startsWith('0') === true) {
+    if(myGuess.startsWith('0') === true) {
       return 3;
     }
-    if(guess.isRepeated() === true) {
+    if(myGuess.isRepeated() === true) {
       return 4;
     }
     return 0;
